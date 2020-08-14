@@ -1,0 +1,42 @@
+@import '../../layouts/vars'
+
+.Header
+	position: fixed
+	top: 0
+	left: 0
+	width: 100%
+	padding: 50px 0 0
+	z-index: 100
+	// isolation: isolate
+
+	.container
+		display: flex
+		justify-content: space-between
+		align-items: center
+
+	.Mini-cart
+		position: relative
+		display: flex
+		align-items: center
+		border: none
+		outline: none
+		background-color: transparent
+		cursor: pointer
+		padding: 14px 25px
+		box-sizing: border-box
+		background-color: $black
+		border-radius: 30px
+		transition: background-color .2s
+		&:hover
+			background-color: $blue
+
+		span
+			font: 18px $medium
+			color: white
+			margin-right: 10px
+
+		svg
+			height: 20px
+			width: auto
+			fill: white
+			transition: fill .2s

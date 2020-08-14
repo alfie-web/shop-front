@@ -1,0 +1,82 @@
+@import '../../layouts/vars'
+
+.Card
+	$card: &
+	display: flex
+	flex-wrap: wrap
+	position: relative
+	width: 100%
+	flex-direction: column
+	justify-content: space-between
+	padding: 30px
+	box-sizing: border-box
+	
+	background-color: white
+	transition: box-shadow .2s
+	
+	&:hover
+		box-shadow: 0 16px 36px 0 rgba(23, 23, 35, .03)
+
+	a
+		text-decoration: none
+
+	figure
+		display: flex
+		justify-content: center
+		align-items: center
+		flex: 1
+		text-align: center
+		margin: 20px 0 40px
+		width: 100%
+		img
+			width: auto
+			height: auto
+			max-height: 150px
+
+			// width: 100%
+			// height: auto
+			// max-height: 200px
+			// max-width: 200px
+
+	&__bottom
+		display: flex
+		justify-content: space-between
+		align-items: center
+		width: 100%
+
+	&__name
+		font: 18px/30px $heavy
+		color: $black
+		margin-bottom: 20px
+		transition: color .2s
+		&:hover
+			color: $blue
+		
+
+	&__cost
+		font: 18px/30px $heavy
+		color: $red
+
+
+	&__addToCart
+		position: relative
+		display: flex
+		align-items: center
+		border: none
+		outline: none
+		background-color: transparent
+		cursor: pointer
+		&:hover
+			svg
+				fill: $blue
+
+		span
+			font: 18px $medium
+			color: $black
+			margin-right: 10px
+
+		svg
+			height: 22px
+			width: auto
+			fill: $black
+			transition: fill .2s

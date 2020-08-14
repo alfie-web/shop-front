@@ -1,0 +1,49 @@
+@import './vars'
+
+*
+	margin: 0
+	padding: 0
+
+body 
+	margin: 0
+	font-family: $medium, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+	overflow-x: hidden
+	background: white
+
+main
+
+section
+	padding: 90px 0
+
+.container
+	display: block
+	width: 97%
+	max-width: 1170px
+	margin: 0 auto
+
+.box
+	display: flex
+	justify-content: space-between
+	align-items: flex-end
+	width: 100%
+
+.title
+	display: block
+
+	&--big
+		font: 48px/55px $heavy
+		color: $black
+
+	&--normal
+		font: 24px/36px $heavy
+		color: $black
+
+	// &--small
+	// 	font: 18px/36px $heavy
+	// 	color: $black
+
+.Logo
+	svg
+		fill: $black
