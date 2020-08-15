@@ -1,77 +1,66 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, memo } from 'react';
 import { connect } from 'react-redux';
 
-import { goodsActions } from '../../store/actions';
-import { Card, Loader } from '../../components';
+import { groupsActions } from '../../store/actions';
+import { Card, Loader, Button, GoodsList } from '../../components';
 
 import './Home.sass';
 
-// import good1 from '../../assets/images/good1.jpg';
 
-// const MOCK_GOODS = [
-// 	{
-// 		id: '1',
-// 		name: 'Кружка “Сердце” (в стиле пиксель арт)',
-// 		cost: 790,
-// 		image: good1
-// 	},
-// 	{
-// 		id: '2',
-// 		name: 'Мягкая подушка “Футбольный мяч”',
-// 		cost: 800,
-// 		image: ""
-// 	},
-// 	{
-// 		id: '3',
-// 		name: 'Чай “Новогоднее настроение”',
-// 		cost: 350,
-// 		image: ""
-// 	},
-// 	{
-// 		id: '4',
-// 		name: 'Чай “Новогоднее настроение 2”',
-// 		cost: 350,
-// 		image: ""
-// 	}
-// ];
-
-const Home = ({ items, isFetching, fetchAll }) => {
+const Home = ({ items, isFetching, fetchAll, fetchGoodsByGroup }) => {
 	useEffect(() => {
-		fetchAll();
-	}, [fetchAll])
+		!items.length && fetchAll();
+	}, [fetchAll, items])
 
 	return (
 		<main className="Home">
-			<section>
-				<div className="container">
-					<div className="box">
-						<h2 className="title title--big">Новые</h2>
-						<span>Select</span>
-					</div>
+			{
+				items && items.map(group => (
+					<section key={group._id} className="Home__section">
+						<div className="container">
+							<div className="box">
+								<h2 className="title title--big">{group.name}</h2>
+								{/* <span>Select</span> */}
+							</div>
 
-					<div className="Home__goods">
-					{
-						items.map((item) => {
-							return (
-								<Card 
-									key={item._id}
-									id={item._id}
-									name={item.name}
-									cost={item.cost}
-									image={item.image}
-								/>
-							)
-						})
-					}
-					</div>
+							<GoodsList 
+								className="Home__goods"
+								fetchGoodsByGroup={fetchGoodsByGroup}
+								group={group}
+							/>
 
-					{ isFetching &&
-						<Loader />
-					}
-				</div>
-			</section>
+							{/* <div className="Home__goods">
+							{
+								group.Goods.map((item) => {
+									return (
+										<Card 
+											key={item._id}
+											id={item._id}
+											name={item.name}
+											cost={item.cost}
+											image={item.image}
+										/>
+									)
+								})
+							}
+							</div> */}
+
+							<Button 
+								content="Показать ещё"
+								// variant="black"
+							/>
+						</div>
+					</section>
+				))
+			}
+			
+			<div className="container">
+				{ isFetching &&
+					<Loader />
+				}
+			</div>
 		</main>
 	)
 }
 
-export default connect(({ goods }) => ({ items: goods.items, isFetching: goods.isFetching }), goodsActions)(Home);
+export default connect(({ groups }) => ({ items: groups.items, isFetching: groups.isFetching }), groupsActions)(Home);

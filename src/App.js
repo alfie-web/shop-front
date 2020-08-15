@@ -11,6 +11,7 @@ function App() {
 
 			<Switch>
 				<Route exact path="/" component={HomePage} />
+				<Route exact path="/goods/:id" render={() => <div>Страница товара</div>} />
 				<Redirect from="*" to="/" />
 			</Switch>
 		</div>

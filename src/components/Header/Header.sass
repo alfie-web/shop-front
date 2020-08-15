@@ -7,6 +7,7 @@
 	width: 100%
 	padding: 50px 0 0
 	z-index: 100
+	pointer-events: none
 	// isolation: isolate
 
 	.container
@@ -22,16 +23,17 @@
 		outline: none
 		background-color: transparent
 		cursor: pointer
-		padding: 14px 25px
+		padding: 16px 25px
 		box-sizing: border-box
 		background-color: $black
 		border-radius: 30px
+		pointer-events: auto
 		transition: background-color .2s
 		&:hover
 			background-color: $blue
 
 		span
-			font: 18px $medium
+			font: 16px $medium
 			color: white
 			margin-right: 10px
 

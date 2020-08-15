@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
@@ -6,7 +6,8 @@ import emptyImage from '../../assets/images/empty.png';
 
 import './Card.sass';
 
-const Card = ({ className, image, name, cost, id }) => {
+const Card = memo(({ className, image, name, cost, id }) => {
+	// console.log('CARD_RENDERS')
 	return (
 		<div className={classNames('Card', className)}>
 			<figure className="Card__image">
@@ -28,6 +29,6 @@ const Card = ({ className, image, name, cost, id }) => {
 			</div>
 		</div>
 	)
-}
+})
 
 export default Card;
