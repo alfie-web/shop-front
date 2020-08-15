@@ -1,8 +1,8 @@
-import React, { useEffect, memo } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { groupsActions } from '../../store/actions';
-import { Card, Loader, Button, GoodsList } from '../../components';
+import { Loader, GoodsList } from '../../components';
 
 import './Home.sass';
 
@@ -45,10 +45,10 @@ const Home = ({ items, isFetching, fetchAll, fetchGoodsByGroup }) => {
 							}
 							</div> */}
 
-							<Button 
+							{/* <Button 
 								content="Показать ещё"
 								// variant="black"
-							/>
+							/> */}
 						</div>
 					</section>
 				))
@@ -59,6 +59,8 @@ const Home = ({ items, isFetching, fetchAll, fetchGoodsByGroup }) => {
 					<Loader />
 				}
 			</div>
+
+			<section></section>
 		</main>
 	)
 }

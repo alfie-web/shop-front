@@ -31,7 +31,14 @@ const groupsReducer = (state = initialState, { type, payload }) => {
 				...state,
 				items: state.items.map(group => {
 					if (group._id === payload.groupId) {
-						return {
+						const isGoodsExists = group.goods;
+						return isGoodsExists ? {
+							...group,
+							goods: [
+								...group.goods,
+								...payload.goods
+							]
+						} : {
 							...group,
 							goods: payload.goods
 						}
