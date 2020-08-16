@@ -35,36 +35,21 @@ const groupsActions = {
 		}
 	},
 
-	
-	// fetchGoodsByGroup: (groupId, page = 0) => async dispatch => {
-	// 	try {
-	// 		const {data} = await groupsAPI.getGoodsByGroup(groupId, page);
-
-	// 		dispatch(groupsActions.setGoodsToGroup(groupId, data.data.goods));
-
-	// 		return data.data.isLastPage;
-	// 	} catch (e) {
-	// 		console.log('Что-то пошло не так')
-	// 	}
-	// }
 
 	fetchGoodsByGroup: (groupId) => async (dispatch, getState) => {
 		const { groups } = getState();
-		const groupObj = groups.items.find((item) => item._id === groupId);
+		const groupObj = groups.items.find((item) => item._id === groupId);	// Либо можно его вытаскивать из компоненты
 		let page = groupObj.currentPage ? groupObj.currentPage : 0;
 
 		try {
 			const {data} = await groupsAPI.getGoodsByGroup(groupId, page);
+			page = data.data.isLastPage ? page : page + 1;
 
 			dispatch(groupsActions.setGoodsToGroup(groupId, data.data.goods));
-
-			page = data.data.isLastPage ? page : page + 1;
-			// dispatch(groupsActions.setPaginateInfoToGroup(groupId, data.data.isLastPage, page + 1));
 			dispatch(groupsActions.setPaginateInfoToGroup(groupId, data.data.isLastPage, page));
 
-			// return data.data.isLastPage;
 		} catch (e) {
-			console.log('Что-то пошло не так')
+			console.log('Что-то пошло не так');
 		}
 	}
 }

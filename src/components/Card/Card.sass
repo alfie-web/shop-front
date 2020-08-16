@@ -1,5 +1,13 @@
 @import '../../layouts/vars'
 
+@keyframes drop
+	from
+		opacity: 0
+		top: 50px
+	to
+		opacity: 1
+		top: 25px
+
 .Card
 	$card: &
 	display: flex
@@ -16,6 +24,9 @@
 	
 	&:hover
 		box-shadow: 0 16px 36px 0 rgba(23, 23, 35, .03)
+
+		#{$card}__colorsBtn
+			opacity: 1
 
 	a
 		text-decoration: none
@@ -38,6 +49,45 @@
 			// max-height: 200px
 			// max-width: 200px
 
+	&__top
+		display: flex
+		justify-content: center
+		position: absolute
+		top: 30px
+		right: 30px
+		// width: 100%
+		display: flex
+		justify-content: flex-end
+
+		.Card__btn
+			// margin: 30px 30px 0 0
+
+	&__colors-wrap
+		position: relative
+		display: flex
+		justify-content: center
+
+	&__colors
+		position: absolute
+		top: 25px
+		// transform: translateY(100%)
+		padding: 20px
+		box-sizing: border-box
+		border-radius: 4px
+		background-color: white
+		z-index: 100
+		width: 100%
+		min-width: 194px
+		box-shadow: 0 16px 36px 0 rgba(23, 23, 35, 0.03)
+		transform: translateY(20px)
+		animation: drop .2s
+
+		.circle-picker 
+			width: auto !important
+
+
+
+
 	&__bottom
 		display: flex
 		justify-content: space-between
@@ -58,7 +108,7 @@
 		color: $red
 
 
-	&__addToCart
+	&__btn
 		position: relative
 		display: flex
 		align-items: center
@@ -66,7 +116,9 @@
 		outline: none
 		background-color: transparent
 		cursor: pointer
-		&:hover
+
+		&:hover, &.active
+			opacity: 1
 			svg
 				fill: $blue
 
@@ -80,3 +132,9 @@
 			width: auto
 			fill: $black
 			transition: fill .2s
+
+	&__colorsBtn
+		opacity: 0
+		transition: opacity .2s
+		svg
+			height: 24px
