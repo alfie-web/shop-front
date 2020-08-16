@@ -16,6 +16,11 @@ const groupsActions = {
 		payload: {groupId, goods}
 	}),
 
+	setPaginateInfoToGroup: (groupId, isLastPage, currentPage) => ({
+		type: 'GROUPS:SET_PAGINATE_INFO_TO_GROUP',
+		payload: {groupId, isLastPage, currentPage}
+	}),
+
 	fetchAll: () => async dispatch => {
 		dispatch(groupsActions.setIsFetching(true));
 
@@ -31,16 +36,33 @@ const groupsActions = {
 	},
 
 	
-	fetchGoodsByGroup: (groupId, page = 0) => async dispatch => {
+	// fetchGoodsByGroup: (groupId, page = 0) => async dispatch => {
+	// 	try {
+	// 		const {data} = await groupsAPI.getGoodsByGroup(groupId, page);
+
+	// 		dispatch(groupsActions.setGoodsToGroup(groupId, data.data.goods));
+
+	// 		return data.data.isLastPage;
+	// 	} catch (e) {
+	// 		console.log('Что-то пошло не так')
+	// 	}
+	// }
+
+	fetchGoodsByGroup: (groupId) => async (dispatch, getState) => {
+		const { groups } = getState();
+		const groupObj = groups.items.find((item) => item._id === groupId);
+		let page = groupObj.currentPage ? groupObj.currentPage : 0;
+
 		try {
 			const {data} = await groupsAPI.getGoodsByGroup(groupId, page);
 
-			// Придётся хранить isLastPage и currentPage в store у конкретной группы
-			// Так как у каждой он разный
-			// Либо хранить в компоненте profit, хотя нет лучше в store, так как локальный state затирается при роутинге
 			dispatch(groupsActions.setGoodsToGroup(groupId, data.data.goods));
 
-			return data.data.isLastPage;
+			page = data.data.isLastPage ? page : page + 1;
+			// dispatch(groupsActions.setPaginateInfoToGroup(groupId, data.data.isLastPage, page + 1));
+			dispatch(groupsActions.setPaginateInfoToGroup(groupId, data.data.isLastPage, page));
+
+			// return data.data.isLastPage;
 		} catch (e) {
 			console.log('Что-то пошло не так')
 		}

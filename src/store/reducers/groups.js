@@ -26,6 +26,21 @@ const groupsReducer = (state = initialState, { type, payload }) => {
 				]
 			}
 
+		case 'GROUPS:SET_PAGINATE_INFO_TO_GROUP':
+			return {
+				...state,
+				items: state.items.map(group => {
+					if (group._id === payload.groupId) {
+						return {
+							...group,
+							isLastPage: payload.isLastPage,
+							currentPage: payload.currentPage
+						}
+					}
+					return group;
+				})
+			}
+
 		case 'GROUPS:SET_GOODS_TO_GROUP': 
 			return {
 				...state,
