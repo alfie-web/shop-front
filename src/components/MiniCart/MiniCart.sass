@@ -1,0 +1,115 @@
+@import '../../layouts/vars'
+
+.MiniCart
+	pointer-events: auto
+	width: 100%
+	max-width: 470px
+	background-color: white
+	box-shadow: 0 16px 36px 0 rgba(23, 23, 35, 0.03)
+	border-radius: 4px
+
+	&__items
+		position: relative
+		width: 100%
+		max-height: 315px
+		overflow-y: auto
+		// padding-bottom: 30px
+
+		&::-webkit-scrollbar
+			width: 3px
+			height: 3px
+			border-radius: 3px
+		&::-webkit-scrollbar-button
+			background-color: #d0dae5
+			display: none
+		&::-webkit-scrollbar-track
+			box-sizing: border-box
+			background-color: #d0dae5
+		&::-webkit-scrollbar-track-piece
+			background-color: #fff
+		&::-webkit-scrollbar-thumb
+			height: 50px
+			background-color: #d0dae5
+			border-radius: 3px
+			
+		&::-webkit-scrollbar-corner
+			background-color: #d0dae5
+		&::-webkit-resizer
+			background-color: #d0dae5
+
+
+
+	&__bottom
+		display: flex
+		justify-content: space-between
+		align-items: center
+		padding: 30px 35px
+		box-sizing: border-box
+
+	&__total
+		color: $blue
+
+
+	
+
+	&__item
+		position: relative
+		width: 100%
+		display: flex
+		align-items: center
+		justify-content: flex-start
+		z-index: 200
+		padding: 20px 0 20px 30px
+		box-sizing: border-box
+		transition: box-shadow .2s
+
+		&:hover
+			box-shadow: 0 16px 36px 0 rgba(23, 23, 35, 0.03)
+
+		&-cost, a
+			display: inline-block
+			flex: 1
+			width: 70%
+
+		&-cost
+			white-space: nowrap
+			text-overflow: ellipsis
+			overflow: hidden
+
+		a
+			text-decoration: none
+			
+			h3
+				line-height: 20px
+				white-space: nowrap
+				text-overflow: ellipsis
+				overflow: hidden
+				margin-bottom: 0
+
+		&-info
+			flex: 1
+
+		figure
+			display: flex
+			justify-content: center
+			align-items: center
+			text-align: center
+			margin-right: 20px
+			img
+				width: auto
+				height: auto
+				max-height: 65px
+
+	&__removeBtn
+		position: absolute
+		right: 30px
+		svg
+			fill: $black
+			transition: fill .2s
+		&:hover
+			svg
+				fill: white
+
+	&__empty
+		margin-left: 30px
+		padding: 30px 0 0

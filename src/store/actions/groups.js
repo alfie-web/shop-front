@@ -42,6 +42,7 @@ const groupsActions = {
 		let page = groupObj.currentPage ? groupObj.currentPage : 0;
 
 		try {
+			// TODO: На самом деле ещё бы синхронизовать товары с корзиной (добавить свойства quantity)
 			const {data} = await groupsAPI.getGoodsByGroup(groupId, page);
 			page = data.data.isLastPage ? page : page + 1;
 

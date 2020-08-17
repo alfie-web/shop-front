@@ -1,5 +1,13 @@
 @import '../../layouts/vars'
 
+@keyframes dropCart
+	from
+		opacity: 0
+		top: 100px
+	to
+		opacity: 1
+		top: 80px
+
 .Header
 	position: fixed
 	top: 0
@@ -11,9 +19,16 @@
 	// isolation: isolate
 
 	.container
+		position: relative
 		display: flex
 		justify-content: space-between
 		align-items: center
+
+	.MiniCart
+		position: absolute
+		right: 0
+		top: 80px
+		animation: dropCart .2s
 
 	.Mini-cart
 		position: relative
@@ -29,8 +44,12 @@
 		border-radius: 30px
 		pointer-events: auto
 		transition: background-color .2s
-		&:hover
+
+		&:hover, &.visible
 			background-color: $blue
+
+		// &.visible
+		// 	background-color: $red
 
 		span
 			font: 16px $medium

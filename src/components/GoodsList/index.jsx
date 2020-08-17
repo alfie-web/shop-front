@@ -30,6 +30,7 @@ const GoodsList = memo(({ group, className, fetchGoodsByGroup }) => {
 								name={item.name}
 								cost={item.cost}
 								image={item.image}
+								colors={item.colors}
 							/>
 						) : null
 					})
