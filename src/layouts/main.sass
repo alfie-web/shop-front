@@ -44,6 +44,28 @@ section
 		font: 18px/36px $heavy
 		color: $black
 
+
+.link
+	position: relative
+	color: $black
+	position: relative
+	text-decoration: none
+	transition: color .2s
+
+	&:hover
+		color: $blue
+		&::before
+			border-bottom: 1px dashed $blue
+
+	&::before
+		content: ''
+		position: absolute
+		width: 100%
+		border-bottom: 1px dashed $gray
+		bottom: -3px
+		transition: border-bottom .2s
+
+
 .Logo
 	pointer-events: auto
 	svg

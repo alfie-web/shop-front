@@ -21,6 +21,14 @@ const cartReducer = (state = initialState, { type, payload }) => {
 					})
 					: [...state.items, payload]
 			}
+
+		case 'CART:REMOVE_GOOD':
+			return {
+				...state,
+				// items: state.items.filter(good => good._id !== payload._id && good.color !== payload.color)
+				items: state.items.filter((good, i) => i !== payload)
+			}
+
 		default: return state;
 	}
 }

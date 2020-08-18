@@ -7,12 +7,16 @@
 	background-color: white
 	box-shadow: 0 16px 36px 0 rgba(23, 23, 35, 0.03)
 	border-radius: 4px
+	overflow: hidden
 
 	&__items
 		position: relative
 		width: 100%
+		// min-height: 105px
 		max-height: 315px
+		// max-height: 210px	// сделать на мобилке
 		overflow-y: auto
+		overflow-x: hidden
 		// padding-bottom: 30px
 
 		&::-webkit-scrollbar
@@ -20,22 +24,22 @@
 			height: 3px
 			border-radius: 3px
 		&::-webkit-scrollbar-button
-			background-color: #d0dae5
+			background-color: #E9EDF2
 			display: none
 		&::-webkit-scrollbar-track
 			box-sizing: border-box
-			background-color: #d0dae5
+			background-color: #E9EDF2
 		&::-webkit-scrollbar-track-piece
 			background-color: #fff
 		&::-webkit-scrollbar-thumb
 			height: 50px
-			background-color: #d0dae5
+			background-color: #E9EDF2
 			border-radius: 3px
 			
 		&::-webkit-scrollbar-corner
-			background-color: #d0dae5
+			background-color: #E9EDF2
 		&::-webkit-resizer
-			background-color: #d0dae5
+			background-color: #E9EDF2
 
 
 
@@ -45,6 +49,9 @@
 		align-items: center
 		padding: 30px 35px
 		box-sizing: border-box
+
+		// .link
+		// 	font: 16px $medium
 
 	&__total
 		color: $blue

@@ -1,28 +1,31 @@
 import React from 'react';
 import classNames from 'classnames';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import emptyImage from '../../assets/images/empty.png';
 import { Button } from '../';
+import { cartActions } from '../../store/actions';
 import './MiniCart.sass';
 
-const MiniCart = ({ className, items = [] }) => {
+const MiniCart = ({ className, items = [], removeGoodFromCart }) => {
 	return (
 		<div className={classNames('MiniCart', className)}>
 			<div className="MiniCart__items">
 				{
 					items.length ? items.map(good => (
-						<div className="MiniCart__item" key={good._id}>
+						<div className="MiniCart__item" key={good._id + good.color}>
 							<figure>
 								<img src={good.image || emptyImage} alt="Good"/>
 							</figure>
 							<div className="MiniCart__item-info">
-								<Link to={`/goods/${good._id}`} >
+								<Link to={`/goods/${good._id}`}>
 									<h3 className="Card__name" title={good.name}>{good.name}</h3>
 								</Link>
 								<div className="MiniCart__item-cost Card__cost">{good.cost} руб. / {good.quantity} шт.</div>
 							</div>
 							<Button 
+								onClick={() => removeGoodFromCart(good)}
 								className="MiniCart__removeBtn"
 								content={
 									<svg width="10" height="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
@@ -39,7 +42,7 @@ const MiniCart = ({ className, items = [] }) => {
 			</div>
 
 			<div className="MiniCart__bottom">
-				<Link to={`/cart`} >Перейти в корзину</Link>
+				<Link to={`/cart`} className="link">Перейти в корзину</Link>
 				<h3 className="title title--small MiniCart__total">{
 					items.reduce((acc, good) => acc += good.cost * good.quantity, 0)
 				} руб.</h3>
@@ -48,4 +51,4 @@ const MiniCart = ({ className, items = [] }) => {
 	)
 }
 
-export default MiniCart;
+export default connect(null, cartActions)(MiniCart);

@@ -24,36 +24,23 @@
 		justify-content: space-between
 		align-items: center
 
-	.MiniCart
+	&__miniCart
 		position: absolute
 		right: 0
 		top: 80px
 		animation: dropCart .2s
 
-	.Mini-cart
-		position: relative
+	&__cartBtn
 		display: flex
 		align-items: center
-		border: none
-		outline: none
-		background-color: transparent
-		cursor: pointer
-		padding: 16px 25px
-		box-sizing: border-box
-		background-color: $black
-		border-radius: 30px
 		pointer-events: auto
-		transition: background-color .2s
+		padding: 15px 25px 16px
 
-		&:hover, &.visible
-			background-color: $blue
-
-		// &.visible
-		// 	background-color: $red
+		&.Button--active
+			&:before
+				box-shadow: 0 16px 36px 0 rgba(244, 22, 62, .1)
 
 		span
-			font: 16px $medium
-			color: white
 			margin-right: 10px
 
 		svg

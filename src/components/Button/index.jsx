@@ -9,7 +9,8 @@ export default function Button({
 	onClick = () => {}, 
 	type = 'button',
 	variant,
-	rounded
+	rounded,
+	isActive = false,
 }) {
 	return (
 		<button 
@@ -18,6 +19,7 @@ export default function Button({
 				'Button--red': variant && variant === 'red',
 				'Button--blue': variant && variant === 'blue',
 				'Button--rounded': rounded,
+				'Button--active': isActive,
 			}, className)}
 			onClick={onClick}
 			type={type}
