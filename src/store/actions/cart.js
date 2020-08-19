@@ -12,6 +12,11 @@ const cartActions = {
 		payload: goodIndex
 	}),
 
+	changeQuantity: (goodIndex, quantity) => ({
+		type: 'CART:CHANGE_GOOD_QUANTITY',
+		payload: {goodIndex, quantity}
+	}),
+
 	addGoodToCart: good => dispatch => {
 		good = {
 			...good,
@@ -24,7 +29,7 @@ const cartActions = {
 		dispatch(cartActions.addGood(good));
 
 		const cart = LocalStorage.get('SNOWFLAKE_CART') || [];
-		const findedIndex = cart.findIndex(item => item._id === good._id && item.color === good.color)
+		const findedIndex = cart.findIndex(item => item._id === good._id && item.color === good.color);
 
 		// Что если цвета будут храниться в массиве???  Нее, проблема в том, что а как удалять товар с корзины
 
@@ -37,14 +42,25 @@ const cartActions = {
 		LocalStorage.set('SNOWFLAKE_CART', cart);
 	},
 
-	removeGoodFromCart: (good) => dispatch => {	
+	removeGoodFromCart: good => dispatch => {	
 		const cart = LocalStorage.get('SNOWFLAKE_CART') || [];
-		const findedIndex = cart.findIndex(item => item._id === good._id && item.color === good.color)
+		const findedIndex = cart.findIndex(item => item._id === good._id && item.color === good.color);
 		const newCart = cart.filter((item, i) => i !== findedIndex);
 
 		dispatch(cartActions.removeGood(findedIndex));
 
 		LocalStorage.set('SNOWFLAKE_CART', newCart);
+	},
+
+	changeGoodQuantity: (good, quantity) => dispatch => {
+		const cart = LocalStorage.get('SNOWFLAKE_CART') || [];
+		const findedIndex = cart.findIndex(item => item._id === good._id && item.color === good.color);
+
+		cart[findedIndex].quantity = quantity;
+
+		dispatch(cartActions.changeQuantity(findedIndex, quantity));
+
+		LocalStorage.set('SNOWFLAKE_CART', cart);
 	}
 }
 

@@ -4,3 +4,4 @@ export { default as Header } from './Header';
 export { default as MiniCart } from './MiniCart';
 export { default as Card } from './Card';
 export { default as GoodsList } from './GoodsList';
+export { default as Color } from './Color';

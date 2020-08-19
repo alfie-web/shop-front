@@ -29,6 +29,20 @@ const cartReducer = (state = initialState, { type, payload }) => {
 				items: state.items.filter((good, i) => i !== payload)
 			}
 
+		case 'CART:CHANGE_GOOD_QUANTITY':
+			return {
+				...state,
+				items: state.items.map((good, i) => {
+					if (i === payload.goodIndex) {
+						return {
+							...good,
+							quantity: good.quantity = payload.quantity
+						}
+					}
+					return good
+				})
+			}
+
 		default: return state;
 	}
 }

@@ -1,0 +1,27 @@
+@import '../../../layouts/vars'
+
+.Counter
+	position: relative
+	display: flex
+	align-items: center
+	padding: 8px 15px
+	box-sizing: border-box
+	background-color: rgba(237, 242, 251, .4)
+	border-radius: 30px
+	font: 18px $medium
+
+	&__quantity
+		margin: 0 10px
+
+	&__btn
+		cursor: pointer
+		display: flex
+		align-items: center
+		user-select: none
+		padding: 5px 8px
+		box-sizing: border-box
+		color: $gray
+		transition: color .2s
+		font: 18px $heavy
+		&:hover
+			color: $blue

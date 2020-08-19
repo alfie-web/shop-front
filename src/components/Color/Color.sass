@@ -1,0 +1,26 @@
+
+
+.Color
+	position: relative
+	display: flex
+	align-items: center
+	justify-content: center
+	width: 23px
+	min-width: 23px
+	height: 23px
+	border-radius: 50%
+
+	&:hover
+		&::before
+			box-shadow: 0 16px 36px 0 rgba(23, 23, 35, 0.1)
+
+	&::before
+		content: ''
+		position: absolute
+		width: 35px
+		min-width: 35px
+		height: 35px
+		border-radius: 50%
+		background-color: #fff
+		z-index: -1
+		transition: box-shadow .2s

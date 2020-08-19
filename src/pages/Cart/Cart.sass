@@ -1,0 +1,77 @@
+@import '../../layouts/vars'
+
+.Cart
+	margin-top: 90px
+
+	&__total
+		color: $blue
+
+	&__items
+		margin: 50px 0
+
+	&__item
+		position: relative
+		width: 100%
+		display: flex
+		align-items: center
+		justify-content: flex-start
+		padding: 20px 90px 20px 40px
+		box-sizing: border-box
+		transition: box-shadow .2s
+
+		&:hover
+			box-shadow: 0 16px 36px 0 rgba(23, 23, 35, 0.03)
+
+		&-name
+			text-decoration: none
+			font-weight: normal
+			width: 45%
+			margin-right: 40px	
+
+			&:hover
+				.title
+					color: $blue
+			
+			.title
+				line-height: 20px
+				white-space: nowrap
+				text-overflow: ellipsis
+				overflow: hidden
+				margin-bottom: 0
+				color: $black
+				transition: color .2s
+
+		&-color
+
+			margin-right: 40px
+
+		&-quantity
+			margin-right: 40px
+
+		&-cost
+			white-space: nowrap
+			// text-overflow: ellipsis
+			// overflow: hidden
+			width: 15%
+		
+
+		figure
+			display: flex
+			justify-content: center
+			align-items: center
+			text-align: center
+			margin-right: 40px
+			img
+				width: auto
+				height: auto
+				max-height: 65px
+
+		&-removeBtn
+			position: absolute
+			right: 40px
+			svg
+				fill: $black
+				transition: fill .2s
+			&:hover
+				svg
+					fill: white

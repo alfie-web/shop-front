@@ -55,7 +55,7 @@ const Card = memo(({ className, image, name, cost, id, colors, addGoodToCart }) 
 				<div className="Card__bottom">
 					<div className="Card__cost">{cost} руб.</div>
 					<button 
-						className="Card__btn" 
+						className="Card__btn Header__permitted" 
 						// Возможно не нужно хранить столько параметров, а делать запрос за товарами на сервак при переходе
 						onClick={() => addGoodToCart({
 							_id: id,
